@@ -2,7 +2,12 @@
   "name": "api",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "author": {
+    "name": "Gustavo Manca",
+    "email": "gustavo.mancaa@gmail.com",
+    "url": "https://linkedin.com/in/gustavomanca"
+  },
+  "description": "A Strapi application for Advanced React Course provided by Willian Justen",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -25,9 +30,6 @@
     "strapi-plugin-upload": "3.6.7",
     "strapi-plugin-users-permissions": "3.6.7",
     "strapi-utils": "3.6.7"
-  },
-  "author": {
-    "name": "A Strapi developer"
   },
   "strapi": {
     "uuid": "b8fbff2c-4856-4d20-a82b-91a34f13b1ba"
