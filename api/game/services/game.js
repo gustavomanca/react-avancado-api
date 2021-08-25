@@ -5,6 +5,22 @@
  * to customize this service
  */
 const axios = require("axios");
+const slugify = require("slugify");
+
+async function checkByNameOnEntity(name, entity) {
+  const row = await strapi.services[entity].find({ name });
+  return !!row.length;
+}
+
+async function create(name, entity) {
+  const exists = await checkByNameOnEntity(name, entity);
+  if (exists) return;
+
+  await strapi.services[entity].create({
+    name,
+    slug: slugify(name, { lower: true }),
+  });
+}
 
 async function getGameInfo(slug) {
   const jsdom = require("jsdom");
@@ -31,6 +47,8 @@ module.exports = {
       data: { products },
     } = await axios.get(gogApiUrl);
 
-    console.log(await getGameInfo(products[0].slug));
+    const [, product] = products;
+
+    await create(product.publisher, "publisher");
   },
 };
